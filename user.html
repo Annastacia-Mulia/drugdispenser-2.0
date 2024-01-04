@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Administrator Registration</title>
+		
+       
+    </head>
+    <body>
+        
+<form id="form" method="POST">
+            <label for="id">ID:</label><br>
+			<input type="number"id="id"name="id"><br>
+
+            <label for="name">Name:</label><br>
+			<input type="text"id="name"name="name"><br>
+
+			<label for="email">Email Address:</label><br>
+			<input type="email"id="email"name="email" ><br>
+
+			<label for="password">password:</label><br>
+			<input type="text"id="password"name="password"><br>
+
+			
+			<input type="reset">
+			<input type="submit" value = "Submit">
+
+</body>
+<script>
+   
+
+    const form = document.getElementById('form');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        // Extract form data
+        const inputData = document.getElementById('inputData').value;
+
+        // Perform any processing or send the data to another file/server
+        handleFormData(inputData);
+    });
+
+    function handleFormData(data) {
+        // You can perform any processing here
+        console.log('Handling form data:', data);
+
+        // Alternatively, you can send the data to another file or server using AJAX
+        // Example: sendFormDataToServer(data);
+    }
+
+    // Example function for sending data to a server using fetch
+    function sendFormDataToServer(data) {
+        fetch('/controller.js', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ inputData: data }),
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Server response:', result);
+            // Handle the server response as needed
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+
+
+
+
+
+
+</script>
+</html>
+
+
